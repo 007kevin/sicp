@@ -1,0 +1,2 @@
+* Introduction
+  This is to keep track of notes while I work through sicp

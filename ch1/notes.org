@@ -1,5 +1,3 @@
-* Introduction
-  This is to keep track of notes while I work through sicp
 * Ch1 - Building Abstractions with Procedures
 ** Interpretor Evaluation of Combinations
    1. Evaluate the subexpressions of the combination
