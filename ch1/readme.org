@@ -31,3 +31,32 @@
    
     
 
+** Procedures as Black-Box Abstraction
+   - procedural abtraction :: 
+        An abstration of a procedure (i.e square function). At this level
+        of abstraction, any procedure that computes the square is
+        equally good
+   - bound variable :: the name of the formal parameter of a procedure 
+                       doesn't matter (i.e local scope). We say the 
+                       procedure definition 'binds' its formal 
+                       parameters.
+                       Caveat: 
+                       The meaning of a procedure definition
+                       is unchanged if a bound variable is consistently 
+                       renamed throughout the definition.
+   - free variable :: an unbound variable.
+   - scope :: The set of expressions for which a binding defines a name
+              is called the scope of that name. In a procedure definition,
+              the bound variable declared as the formal parameters of 
+              the procedure have the body of the procedure as their scope.
+   
+   We can have nested 'define' in a procedure to make those internal
+   definitions be scoped local to the outer procedure.
+
+   - block structure :: nesting of definitions
+   - lexical scoping :: dictates that free variables in a procedure are
+        taken to refer to the bindings made by enclosing procedure
+        definitions; that is, they are looked up in the environment
+        in which the procedure was defined.
+                       
+        
