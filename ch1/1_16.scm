@@ -11,10 +11,11 @@
 
 ;; iterative process
 (define (fast-expt-iter b n)
-  (define (fast-expt p n)
-    (cond ((= n 0) 1)
-          ((= n 1) p)
-          ((even? n) (fast-expt (* p p) (/ n 2)))
-          (else (fast-expt (* p b) (- n 1)))))
-  (fast-expt b n))
+  (define (f p m)
+    (cond ((= n m) p)
+          ((> m n) (f (/ p b) (- m 1)))
+          ((< m n) (f (* p p) (* m 2)))))
+  (if (= 0 n) 1
+      (f b 1)))
+    
         
