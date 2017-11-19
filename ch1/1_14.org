@@ -1,0 +1,13 @@
+* Exercise 1.14:
+  Draw the tree illustrating the process gen-
+  erated by the count-change procedure of Section 1.2.2 in
+  making change for 11 cents. What are the orders of growth
+  of the space and number of steps used by this process as
+  the amount to be changed increases?
+
+** Answer
+   Space complexity is O(n), time complexity is O(2^n)
+
+*wrong* - refers proof (1_14-solution.pdf)
+
+
