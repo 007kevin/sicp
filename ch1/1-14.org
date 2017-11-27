@@ -9,6 +9,6 @@
 ** Answer
    Space complexity is O(n), time complexity is O(2^n)
 
-*wrong* - refers proof (1_14-solution.pdf)
+*wrong* - refers proof (1-14.pdf)
 
 
