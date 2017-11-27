@@ -17,4 +17,12 @@
 
 ;; Iterative solution with invariant quantity
 
+(define (ei b n)
+  (define (e a b n)
+    (cond ((= n 0) a)
+          ((even? n) (e a (square b) (/ n 2)))
+          (else (e (* a b) b (- n 1)))))
+  (e 1 b n))
+  
+
 
