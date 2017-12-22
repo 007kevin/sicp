@@ -1,0 +1,11 @@
+#+BEGIN_SRC lisp
+  (define (gcd a b)
+    (if (= b 0)
+        a
+        (gcd b (remainder a b))))
+#+END_SRC
+With normal order evaluation, when evaluatign (gcd 206 40), the remainder function is
+call 18 times due to the evaluation characteristic of the special 'if' operator.
+
+For application order evalucation however, arguments are first evaluated thus remainder
+only called 3 times!
