@@ -8,4 +8,4 @@ With normal order evaluation, when evaluatign (gcd 206 40), the remainder functi
 call 18 times due to the evaluation characteristic of the special 'if' operator.
 
 For application order evalucation however, arguments are first evaluated thus remainder
-only called 3 times!
+only called 4 times!
