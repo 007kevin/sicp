@@ -1,6 +1,23 @@
-(load "1-23.scm")
+(define (expmod base exp m)
+  (cond ((= exp 0) 1)
+        ((even? exp)
+         (remainder
+          (square (expmod base (/ exp 2) m))
+          m))
+        (else
+         (remainder
+          (* base (expmod base (- exp 1) m))
+          m))))
+(define (fermat-test n)
+  (define (try-it a)
+    (= (expmod a n n) a))
+  (try-it (+ 1 (random (- n 1)))))
+(define (fast-prime? n times)
+  (cond ((= times 0) true)
+        ((fermat-test n) (fast-prime? n (- times 1)))
+        (else false)))
 (define (prime? n)
-  (= n (smallest-divisor n)))
+  (fast-prime? n 10))
 (define (timed-prime-test n)
   (newline)
   (display n)
@@ -25,14 +42,6 @@
     (start count start-time n))
   (start 3 (runtime) (if (odd? n) n (+ n 1))))
 
-;; (search-for-primes 10000000)   -> 1.9999999999999997e-2
-;; (search-for-primes 100000000)  -> .04000000000000001
-;; (search-for-primes 1000000000) -> .13999999999999999
-;; By running search-for-primes for given n, we should expect n*10 to take
-;; sqrt(10) = 3.162278 times as long.
-;; .13999999999999999 / .04000000000000001 = 3.5 ~ 3.162278
-;; thus the timing seems to bear out the expectation.
-;; The results seem compatible with the notion that programs run proportional
-;; to the number of steps required for the computation.
-        
-    
+;; (search-for-primes 1000000000000000000000) -> 3.0000000000001137e-2
+;; (search-for-primes 10000000000000000000000) -> .00999999999999801
+;; (search-for-primes 100000000000000000000000) -> 1.9999999999999574e-2

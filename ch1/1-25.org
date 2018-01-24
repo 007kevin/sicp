@@ -1,0 +1,16 @@
+* Exercise 1.25: 
+  Alyssa P. Hacker complains that we went to
+  a lot of extra work in writing expmod. After all, she says,
+  since we already know how to compute exponentials, we
+  could have simply written
+  #+BEGIN_SRC scheme
+    (define (expmod base exp m)
+    (remainder (fast-expt base exp) m))
+  #+END_SRC
+  Is she correct? Would this procedure serve as well for our
+  fast prime tester? Explain.
+
+** Answer
+   No because for a sufficients large base and exp, having to calculate the
+   remainder will become expensive. Whereas for the one we define, the
+   remainder is computer intermediately.
