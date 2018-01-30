@@ -1,0 +1,20 @@
+#+BEGIN_SRC lisp
+  (define (expmod base exp m)
+    (cond ((= exp 0) 1)
+          ((even? exp)
+           (remainder (* (expmod base (/ exp 2) m)
+                         (expmod base (/ exp 2) m))
+                      m))
+          (else
+           (remainder (* base
+                         (expmod base (- exp 1) m))
+                      m))))
+#+END_SRC
+This process has been transformed to a O(n) process because the same value is calculated twice.
+If square was used instead, applicative order evaluation would have made it so expmod caluculation
+is done once.
+
+More precisely: 
+*Instead of a linear recursion, the rewritten expmod generates a tree recursion*, 
+whose execution time grows exponentially with the depth of the tree, which is 
+the logarithm of N. Therefore, the execution time is linear with N.
