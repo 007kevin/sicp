@@ -8,9 +8,11 @@
          (remainder
           (* base (expmod base (- exp 1) m))
           m))))
-(define (fooled-by-carmichael-number n)
-  (define (fermat-test a)
+
+(define (miller-rabin-test n)
+  (define (alt-fermat-test a)
     (cond ((= a 0) true)
-          ((= (expmod a n n) a) (fermat-test (- a 1)))
+          ((= (expmod a (- n 1) n) 1) (alt-fermat-test (- a 1)))
           (else false)))
-  (fermat-test (- n 1)))
+  (if (= (remainder n 2) 0) false (alt-fermat-test (- n 1))))
+
