@@ -1,14 +1,12 @@
 (define (miller-rabin-test n)
   (define (expmod base exp m)
-    (define (check val)
-      (cond ((= val 1) val)
-            ((= val (square (- n 1))) val)
-            ((= (remainder val n) 1) 0)
-            (else val)))
-    (cond ((= exp 0) 1)
+    (cond ((= exp 0) (if (and ;; check for carmichael number hete
+                          (not (or (= base 1) (= base (- n 1))))
+                          (= (remainder (square base) n) 1))
+                         0 1))
           ((even? exp)
            (remainder
-            (check (square (expmod base (/ exp 2) m)))
+            (square (expmod base (/ exp 2) m))
             m))
           (else
            (remainder
